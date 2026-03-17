@@ -62,7 +62,7 @@
 
 ```bash
 # 克隆项目
-git clone https://github.com/your-repo/smart-customer-service.git
+git clone https://github.com/E-D-HAZARD/smart-customer-service
 cd smart-customer-service
 
 # 使用 Docker 部署
@@ -77,9 +77,8 @@ docker-compose up -d
 
 ### 3. 配置模型
 
-```bash
-# 配置 MiniMax API
-export MINIMAX_API_KEY="your-api-key"
+```
+# 配置你的 API
 ```
 
 ### 4. 启动服务
