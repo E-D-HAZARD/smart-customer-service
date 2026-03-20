@@ -4,7 +4,7 @@
 
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-Framework-blue)](https://openclaw.ai)
 [![Feishu](https://img.shields.io/badge/飞书-Bot-green)](https://www.feishu.cn)
-[![MiniMax](https://img.shields.io/badge/Model-MiniMax_M2.7-orange)](https://www.minimax.com)
+[![OpenAI Compatible](https://img.shields.io/badge/Model-All_Compatible-orange)](#)
 
 ## 项目简介
 
@@ -12,7 +12,7 @@
 
 ## 已实现核心特性
 
-- 🤖 **多轮对话与自主规划**：基于 MiniMax 编程大模型（如 m2.7 系列）与 OpenAI 兼容生态开发，Agent 能够自主识别意图并路由至特定 Tool 处理。
+- 🤖 **多轮对话与自主规划**：核心框架不绑定特定模型！不论是基础的 OpenAI GPT 系列，还是国内的 MiniMax、智谱 AI 等模型，只要兼容 OpenAI API 规范，只需修改环境变量即可无缝切换！
 - 📚 **知识库本地 RAG**：内置基于局部 ChromaDB 向量引擎的 FAQ 自动索引系统。
 - 🔌 **灵活扩展 Skills**：业务模块化，已内置“银行业务”、“税务业务”以及“教务服务”多套处理钩子。
 - 📱 **多端接入**：针对飞书平台进行了全闭环的 Webhook 和 Challenge 安全握手校验集成。
@@ -30,7 +30,7 @@
 └──────┬──────┘
        │
 ┌──────▼──────┐
-│  OpenClaw   │  ← Agent + M2.7 大模型中枢
+│  OpenClaw   │  ← Agent + 大语言模型中枢 (支持泛用)
 │   Agent     │
 └──────┬──────┘
        │
@@ -45,8 +45,8 @@
 | 组件 | 技术 |
 |-----|------|
 | Web 后端 | Python FastAPI |
-| Agent 构建 | OpenClaw 风格 / OpenAI Node |
-| 大语言模型 | **MiniMax (M2.7)** / GPT |
+| Agent 构建 | OpenClaw 风格 / OpenAI SDK |
+| 大语言模型 | **任何兼容 OpenAI 规范的模型 (GPT, MiniMax, 等)** |
 | 消息平台 | 飞书 Webhook 订阅机制 |
 | 部署环境 | **Docker Compose** |
 | 向量数据库 | **ChromaDB** |
@@ -70,9 +70,10 @@ cp .env.example .env
 ```
 
 您需要在 `.env` 中填入：
-- **MINIMAX_API_KEY**：您的 Minimax API 密钥
+- **LLM_API_KEY**：您的模型提供商（如 Minimax、OpenAI 等）API 密钥
+- **LLM_BASE_URL**：您的请求终端 URL，例如 `https://api.minimax.chat/v1`
+- **LLM_MODEL**：模型名称，如 `MiniMax-Text-2.7` 或 `gpt-4o`
 - **FEISHU_APP_ID / SECRET**：飞书后台获取
-- 确认模型参数默认（`LLM_MODEL=MiniMax-Text-2.7`）或依照官方填写。
 
 ### 3. 启动服务与飞书验证
 
