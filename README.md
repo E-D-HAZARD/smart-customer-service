@@ -89,8 +89,8 @@
 
 ```bash
 # 克隆项目
-git clone https://github.com/E-D-HAZARD/-.git
-cd -/智能客服
+git clone https://github.com/AlexYuanch/smart-customer-service.git
+cd smart-customer-service
 ```
 
 ### 2. 配置环境变量与模型
